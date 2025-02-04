@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>formsjs Preguntas</title>
+    <script src="formsjs.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <button onclick="startQuiz(true)">Iniciar Quiz con Temporizador</button>
+    <button onclick="startQuiz(false)">Iniciar Quiz sin Temporizador</button>
+    <div id="quiz-container"></div>
+
+    <script>
+        const quizData = {
+            questions: [
+                {
+                    question: "¿Cuál es la capital de Japón?",
+                    answers: [
+                        { text: "Beijing", icon: "fas fa-building", iconPosition: "left" },
+                        { text: "Seúl", icon: "fas fa-city", iconPosition: "top" },
+                        { text: "Tokio", correct: true, icon: "fas fa-torii-gate", iconPosition: "right" },
+                        { text: "Bangkok", image: "https://via.placeholder.com/50", iconPosition: "bottom" }
+                    ]
+                },
+                {
+                    question: "Selecciona los colores primarios:",
+                    answers: [
+                        { text: "Rojo", correct: true, icon: "fas fa-paint-brush", iconPosition: "left" },
+                        { text: "Verde", icon: "fas fa-leaf", iconPosition: "top" },
+                        { text: "Azul", correct: true, icon: "fas fa-tint", iconPosition: "right" },
+                        { text: "Amarillo", correct: true, icon: "fas fa-sun", iconPosition: "bottom" },
+                        { text: "Naranja", icon: "fas fa-carrot", iconPosition: "left" }
+                    ]
+                },
+                {
+                    question: "¿Qué animal se muestra en la imagen?",
+                    image: "https://via.placeholder.com/150",
+                    answers: [
+                        { text: "Perro", icon: "fas fa-dog", iconPosition: "top" },
+                        { text: "Gato", correct: true, icon: "fas fa-cat", iconPosition: "right" }
+                    ]
+                }
+            ]
+        };
+
+        const quizConfig = {
+            mode: "modal",  // "modal" o "inline"
+            colors: {
+                background: "#f4f4f4",
+                question: "#333333",
+                button: ["#007BFF", "#28a745", "#ffc107", "#dc3545"],
+                buttonText: "#ffffff",
+                timer: "#17a2b8",
+                modalBackground: "rgba(0, 0, 0, 0.8)"
+            },
+            height: "300px",
+            width: "100%",
+            fontSize: "1.6em",
+            onFinish: (score, total) => alert(`¡Terminaste el quiz con ${score} respuestas correctas de ${total}!`),
+            onAnswer: (isCorrect, answer) => console.log(`Respuesta ${isCorrect ? 'correcta' : 'incorrecta'}:`, answer)
+        };
+
+        function startQuiz(withTimer) {
+            const config = {...quizConfig, timer: withTimer ? 15 : 0};
+            formsjs.init("quiz-container", quizData, config);
+        }
+    </script>
+
+</body>
+</html>
+
