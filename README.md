@@ -12,8 +12,8 @@
 ## Instalación
 Incluye el archivo JS:
 ```html
-<script src="formsjs.js"></script>
-´´´
+<script src="formsjs.min.js"></script>
+```
 
 ## Configuración
 ```js
@@ -38,9 +38,9 @@ const config = {
   onFinish: (responses) => {},
   onAnswer: (response) => {}
 };
-´´´
+```
 
-##Estructura de Datos
+## Estructura de Datos
 ```js
 const quizData = {
   questions: [
@@ -65,39 +65,39 @@ const quizData = {
     }
   ]
 };
-´´´
+```
 
-##Uso Básico
+## Uso Básico
 ```js
 // Inicializar quiz
 formsjs.init('quiz-container', quizData, config);
 
 // Destruir instancia
 formsjs.destroy();
-´´´
+```
 
-##Tipos de Preguntas
-    Selección múltiple:
-        Usar type: "choice"
-        Definir correct: boolean en respuestas
-    Texto abierto:
-        Usar type: "text"
-        No requiere definición de respuestas
+## Tipos de Preguntas
+- Selección múltiple:
+    - Usar type: "choice"
+    - Definir correct: boolean en respuestas
+- Texto abierto:
+    - Usar type: "text"
+    - No requiere definición de respuestas
 
-##Preguntas Condicionales
+## Preguntas Condicionales
 ```js
 condition: {
   questionIndex: 0,          // Índice de pregunta referenciada
   expectedAnswer: true|false // Respuesta requerida para mostrar
 }
-´´´
+```
 
-##Métodos Públicos
-    - init(containerId, quizData, config): Inicializa el quiz
-    - destroy(): Limpia recursos y remueve elementos
-    - startQuiz(): Reinicia el cuestionario
+## Métodos Públicos
+- init(containerId, quizData, config): Inicializa el quiz
+- destroy(): Limpia recursos y remueve elementos
+- startQuiz(): Reinicia el cuestionario
 
-##Ejemplo Completo
+## Ejemplo Completo
 ```js
 // Configuración
 const quizConfig = {
@@ -124,9 +124,9 @@ const quizData = {
 
 // Inicializar
 formsjs.init('quiz-container', quizData, quizConfig);
-´´´
+```
 
-##Notas
+## Notas
 - Los estilos se pueden sobreescribir via CSS
 - Requiere un contenedor HTML con el ID especificado
 - Compatible con navegadores modernos (ES6+)
